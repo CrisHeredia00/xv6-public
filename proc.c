@@ -536,5 +536,5 @@ procdump(void)
 int
 count_procs()
 {
-  return n;
+  return 0;
 }
