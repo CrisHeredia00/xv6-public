@@ -532,3 +532,9 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+int
+count_procs()
+{
+  return n;
+}
