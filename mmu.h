@@ -65,16 +65,18 @@ struct segdesc {
 // A virtual address 'la' has a three-part structure as follows:
 //
 // +--------10------+-------10-------+---------12----------+
-// | Page Directory |   Page Table   | Offset within Page  |
-// |      Index     |      Index     |                     |
+// | Page Directory |   Page Table   | Offset within Page  |aqui parte
+// |      Index     |      Index     |                     |la memoria
 // +----------------+----------------+---------------------+
 //  \--- PDX(va) --/ \--- PTX(va) --/
 
 // page directory index
 #define PDX(va)         (((uint)(va) >> PDXSHIFT) & 0x3FF)
+//Lo que esta haciendo es: ((desde donde parte la memoria, suma 22 bits) y usa un espacio de 1023(10bits -1))
 
 // page table index
 #define PTX(va)         (((uint)(va) >> PTXSHIFT) & 0x3FF)
+//Lo que esta haciendo es: ((desde donde parte la memoria, suma 12 bits) y usa un espacio de 1023(10bits -1))
 
 // construct virtual address from indexes and offset
 #define PGADDR(d, t, o) ((uint)((d) << PDXSHIFT | (t) << PTXSHIFT | (o)))
