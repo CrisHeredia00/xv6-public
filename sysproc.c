@@ -46,8 +46,6 @@ int
 sys_getphydir(void)
 {
   int var;
-  int* x = &var;
-  cprintf("la direccion de var al inicio es: %p", x);
   if(argint(0, &var) < 0)
     return -1;
   return phydir(var);
