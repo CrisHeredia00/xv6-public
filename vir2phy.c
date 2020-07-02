@@ -5,5 +5,6 @@
 
 int main(void) {
     printf(1, "La cantidad de procesos en ejecucion en la CPU es %i\n", getphydir(0));
+    return 0;
     exit();
 }
