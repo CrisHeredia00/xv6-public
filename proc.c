@@ -537,7 +537,9 @@ int
 phydir(int var){
   int* x = &var;
   int y = PDX(var);
+  int z = PTX(var);
   cprintf("La direccion virtual de var es: %p \n", x);
   cprintf("El page directory index de var es: %d \n", y);
-  return 5;
+  cprintf("El page table index de var es: %d \n", z);
+  return var;
 }
