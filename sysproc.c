@@ -42,7 +42,7 @@ sys_getpid(void)
   return myproc()->pid;
 }
 
-int*
+int
 sys_getphydir(void)
 {
   int var;
