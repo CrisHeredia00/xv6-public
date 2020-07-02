@@ -533,7 +533,7 @@ procdump(void)
   }
 }
 
-int phydir(int var){
+int* (int var){
   int* x = &var;
   return x;
 }
