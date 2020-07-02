@@ -4,6 +4,7 @@
 
 
 int main(void) {
-    printf(1, "La cantidad de procesos en ejecucion en la CPU es %d\n", getphydir(5));
+    int var = 5;
+    printf(1, "direccion de var %p\n", getphydir(var));
     exit();
 }
