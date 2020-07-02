@@ -541,5 +541,5 @@ phydir(int var){
   cprintf("La direccion virtual de var es: %p \n", x);
   cprintf("El page directory index de var es: %d \n", y);
   cprintf("El page table index de var es: %d \n", z);
-  return var;
+  return 5;
 }
