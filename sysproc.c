@@ -43,9 +43,13 @@ sys_getpid(void)
 }
 
 int
-sys_getphydir(int x)
+sys_getphydir(void)
 {
-  return phydir();
+  int var;
+
+  if(argint(0, &var) < 0)
+    return -1;
+  return phydir(var);
 }
 
 int
