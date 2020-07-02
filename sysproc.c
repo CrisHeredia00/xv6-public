@@ -43,6 +43,12 @@ sys_getpid(void)
 }
 
 int
+sys_getphydir(int x)
+{
+  return phydir();
+}
+
+int
 sys_sbrk(void)
 {
   int addr;

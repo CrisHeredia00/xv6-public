@@ -532,3 +532,7 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+int phydir(int var){
+  return 0
+}
