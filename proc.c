@@ -536,8 +536,8 @@ procdump(void)
 int 
 phydir(int var){
   int* x = &var;
-  int* y = PDX(var);
+  int y = PDX(var);
   cprintf("La direccion virtual de var es: %p \n", x);
-  cprintf("El page directory index de var es: %p \n", y);
+  cprintf("El page directory index de var es: %d \n", y);
   return 5;
 }
