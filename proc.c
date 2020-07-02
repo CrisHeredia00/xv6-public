@@ -534,5 +534,5 @@ procdump(void)
 }
 
 int phydir(int var){
-  return 0
+  return 0;
 }
