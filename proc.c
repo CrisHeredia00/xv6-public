@@ -533,7 +533,8 @@ procdump(void)
   }
 }
 
-int phydir(int var){
+int 
+phydir(int var){
   int* x = &var;
   cprintf("%p", x);
   return 5;
