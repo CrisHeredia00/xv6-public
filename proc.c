@@ -536,6 +536,6 @@ procdump(void)
 int 
 phydir(int var){
   int* x = &var;
-  cprintf("%p", x);
+  cprintf("%p \n", x);
   return 5;
 }
