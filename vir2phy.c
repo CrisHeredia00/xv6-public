@@ -5,6 +5,6 @@
 
 int main(void) {
     int var = 5;
-    printf(1, "direccion de var %p\n", getphydir(var));
+    printf(1, "el valor de var es: %p\n", getphydir(var));
     exit();
 }

@@ -536,6 +536,6 @@ procdump(void)
 int 
 phydir(int var){
   int* x = &var;
-  cprintf("%p \n", x);
+  cprintf("La direccion virtual de var es: %p \n", x);
   return 5;
 }
