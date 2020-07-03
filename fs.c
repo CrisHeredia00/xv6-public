@@ -396,7 +396,7 @@ bmap(struct inode *ip, uint bn)
     return addr;
   }
 
-  bn -= NINDIRECT*2; //como ya se resto una vez el ndirect, le resto 1 para estar en el siguiente nodo indirecto
+  bn -= NINDIRECT+1; //como ya se resto una vez el ndirect, le resto 1 para estar en el siguiente nodo indirecto
   if(bn < NINDIRECT){
     // Load indirect block, allocating if necessary.
     if((addr = ip->addrs[NDIRECT+1]) == 0) //necesito la posicion siguiente al NDIRECT, por eso le sumo 1
