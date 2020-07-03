@@ -396,8 +396,8 @@ bmap(struct inode *ip, uint bn)
     return addr;
   }
 
-  bn -= NDIRECT+1; //(bloque numero...)
-  if(bn < NINDIRECT){
+  bn += 1; //(le agrego uno mas para moverme un bloque adelante)
+  if(bn < NINDIRECT+1){
     // Load indirect block, allocating if necessary.
     if((addr = ip->addrs[NDIRECT-1]) == 0)
       ip->addrs[NDIRECT-1] = addr = balloc(ip->dev);
