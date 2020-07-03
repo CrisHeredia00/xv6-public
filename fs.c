@@ -396,7 +396,7 @@ bmap(struct inode *ip, uint bn)
     return addr;
   }
 
-  bn -= NINDIRECT; //(le quito uno indirecto)
+  bn += NINDIRECT; //(le quito uno indirecto)
   if(bn < NINDIRECT){
     // Load indirect block, allocating if necessary.
     if((addr = ip->addrs[NDIRECT+1]) == 0)
