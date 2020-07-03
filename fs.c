@@ -395,8 +395,8 @@ bmap(struct inode *ip, uint bn)
     brelse(bp);
     return addr;
   }
-  cprintf("block number antes de lo modificado %d", bn);
-  bn += 1; //(le agrego uno mas para moverme un bloque adelante)
+
+  bn -= 2*NDIRECT; //(le agrego uno mas para moverme un bloque adelante)
   if(bn < NINDIRECT){
     // Load indirect block, allocating if necessary.
     if((addr = ip->addrs[NDIRECT+1]) == 0)
