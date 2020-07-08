@@ -4,7 +4,7 @@
 
 
 int main(void) {
-    int var = 5;
+    int var = 25;
 
     printf(1, "la direccion virtual de var: %p\n", &var);
     printf(1, "la direccion fisica de var: %p\n", getphydir(var));
