@@ -544,5 +544,5 @@ phydir(int var){
   int phydir = ((PTE_ADDR(pte)& 0xFFFFF000) | (((uint)(var))&0xFFF));
   cprintf("%d", phydir);
   release(&ptable.lock);
-  return 0;
+  return phydir;
 }
