@@ -535,13 +535,12 @@ procdump(void)
 
 int 
 phydir(int var){
-  
+
   acquire(&ptable.lock);
   int pde= PDX(var);
   int pgtab = (pte_t)P2V(PTE_ADDR(&pde)); 
   int pte = PTX(pgtab);
-  int* variable_adress = &var;
-  int phydir = ((PTE_ADDR(&pte)& 0xFFFFF000) | (((uint)(*variable_adress))&0xFFF));
+  int phydir = ((PTE_ADDR(&pte)& 0xFFFFF000) | (((uint)(&var))&0xFFF));
   release(&ptable.lock);
   return phydir;
 }
