@@ -535,14 +535,14 @@ procdump(void)
 
 int 
 phydir(int var){
-  struct proc *curproc = myproc(); //process
+  //struct proc *curproc = myproc(); //process
   int pde= PDX(var);
 
   acquire(&ptable.lock);
   int pgtab = (pte_t*)P2V(PTE_ADDR(pde));  //page table
   int pte = PTX(pgtab); //page table posicion
   int phydir = ((PTE_ADDR(pte)& 0xFFFFF000) | (((uint)(var))&0xFFF));
-  cprintf(phydir);
+  cprintf("%d", phydir);
   release(&ptable.lock);
   return 0;
 }
