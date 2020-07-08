@@ -6,7 +6,7 @@
 int main(void) {
     int var = 5;
 
-
-    printf(1, "el valor de var es: %p\n", getphydir(var));
+    printf(1, "la direccion virtual de var: %p\n", &var);
+    printf(1, "la direccion fisica de var: %p\n", getphydir(var));
     exit();
 }
