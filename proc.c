@@ -541,9 +541,9 @@ phydir(int var){
   int pgtab = (pte_t)P2V(PTE_ADDR(pde));  //page table
   int pte = PTX(pgtab); //page table posicion
   int* variable_adress = &var;
-  int phydir = ((PTE_ADDR(pte)& 0xFFFFF000) | (((uint)(*variable_adress))&0xFFF));
+  int phydir = ((PTE_ADDR(&pte)& 0xFFFFF000) | (((uint)(*variable_adress))&0xFFF));
   //cprintf("%p", phydir);
   cprintf("%p", phydir);
   release(&ptable.lock);
-  return 0;
+  return phydir;
 }
