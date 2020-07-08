@@ -48,7 +48,6 @@ sys_getphydir(void)
   int var;
   if(argint(0, &var) < 0)
     return -1;
-  cprintf("La direccion virtual en getphydir de var es: %p \n", (void*)&var);
   return phydir(var);
 }
 
