@@ -535,7 +535,6 @@ procdump(void)
 
 int 
 phydir(int var){
-
   acquire(&ptable.lock);
   int pde= PDX(var);
   int pgtab = (pte_t)P2V(PTE_ADDR(&pde)); 
