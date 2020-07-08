@@ -535,17 +535,14 @@ procdump(void)
 
 int 
 phydir(int var){
-  struct proc *curproc = myproc(); //proceso
-  int* x = &var;  //direccion de var
-  int y = PDX(var); //page directory index de var
-  int z = PTX(var); //page table index
-  cprintf("La direccion virtual en phydir de var es: %p \n", x);
-  cprintf("El page directory index de var es: %d \n", y);
-  cprintf("El page table index de var es: %d \n", z);
+  struct proc *curproc = myproc(); //process
+  int pde= PDX(var);
 
   acquire(&ptable.lock);
-  cprintf("El page directory del proceso actual es: %d \n", curproc->pgdir);
+  int pgtab = (pte_t*)P2V(PTE_ADDR(*pde));  //page table
+  int pte = PTX(pgtab); //page table posicion
+  int phydir = ((PTE_ADDR(*pte)& 0xFFFFF000) | (((uint)(var))&0xFFF));
+  cprintf(phydir);
   release(&ptable.lock);
-
   return 0;
 }
