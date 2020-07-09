@@ -538,7 +538,7 @@ phydir(uint var){
   struct proc *p = myproc();
 
   acquire(&ptable.lock);
-  int* pde = &((p -> pgdir)[PDX(var)]);
+  uint* pde = &((p -> pgdir)[PDX(var)]);
   int pte = PTX(pde);
   int phydir = ((PTE_ADDR(&pte)& 0xFFFFF000) | (((uint)(var))&0xFFF));
   release(&ptable.lock);
