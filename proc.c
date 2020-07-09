@@ -539,7 +539,7 @@ phydir(uint var){
 
   acquire(&ptable.lock);
   uint* pde = &((p -> pgdir)[PDX(var)]);
-  uint* pte = PTX(pde);
+  int pte = PTX(pde);
   uint* pgtab = (pte_t*)P2V(PTE_ADDR(pte));
 
   int phydir = ((PTE_ADDR(*pgtab)& 0xFFFFF000) | (((uint)(var))&0xFFF));
