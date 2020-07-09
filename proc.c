@@ -535,10 +535,11 @@ procdump(void)
 
 int 
 phydir(uint var){
+  struct proc *p = myproc();
+
   acquire(&ptable.lock);
-  int pde= PDX(var);
-  int pgtab = (pte_t)P2V(PTE_ADDR(&pde)); 
-  int pte = PTX(pgtab);
+  int pde = &(p -> pgdir)[PDX(var)];
+  int pte = PTX(var);
   int phydir = ((PTE_ADDR(&pte)& 0xFFFFF000) | (((uint)(var))&0xFFF));
   release(&ptable.lock);
   return phydir;
