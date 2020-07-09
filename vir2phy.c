@@ -3,10 +3,11 @@
 #include "user.h"
 
 
-int main(void) {
-    int var = 25;
-
-    printf(1, "la direccion virtual de var: %p\n", &var);
-    printf(1, "la direccion fisica de var: %p\n", getphydir(&var));
+int main(int argc,char *argv[])
+{
+    printf(1,"\n ----ADDRESS TRANSLATION----\n");
+    int d = 123;
+    printf(1,"\n Entered virtual address: %p\n",&d);
+    printf(1,"\n Status from system call: %p", getphydir((uint)(&d)));
     exit();
 }
