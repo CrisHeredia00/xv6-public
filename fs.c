@@ -213,6 +213,22 @@ ialloc(uint dev, short type)
   panic("ialloc: no inodes");
 }
 
+//FUNCIÓN DEL PROYECTO
+int
+files_count(void)
+{
+  int inum;
+  struct dinode *dip;
+  int num_files = 0;
+
+  for(inum = 1; inum < sb.ninodes; inum++)
+  {
+    if(dip->type == 1) // a used inode (dir)
+      num_files++;
+  }
+  return num_files; 
+}
+
 // Copy a modified in-memory inode to disk.
 // Must be called after every change to an ip->xxx field
 // that lives on disk, since i-node cache is write-through.
