@@ -218,15 +218,28 @@ int
 files_count(void)
 {
   int inum;
+  struct buf *bp;
   struct dinode *dip;
-  int num_files = 0;
+  char name[DIRSIZ], *path;
 
-  for(inum = 1; inum < sb.ninodes; inum++)
-  {
-    if(dip->type == 1) // a used inode (dir)
-      num_files++;
+  struct inode *dp;
+  int num_dir = 0;
+
+
+  if(argstr(0, &path) < 0)
+    return -1;
+
+  dp = nameiparent(path, name);
+
+  for(inum = 1; inum < sb.ninodes; inum++){
+    bp = bread(dp->dev, IBLOCK(inum, sb));
+    dip = (struct dinode*)bp->data + inum%IPB;
+    if(dip->type == 1){  
+      num_dir++;
+    }
+    brelse(bp);
   }
-  return num_files; 
+  return num_dir;
 }
 
 // Copy a modified in-memory inode to disk.
