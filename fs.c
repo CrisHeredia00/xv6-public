@@ -220,8 +220,8 @@ files_count(void)
   int inum;
   struct buf *bp;
   struct dinode *dip;
-  char name[DIRSIZ], *path;
 
+  char name[DIRSIZ], *path; //error en el path
   struct inode *dp;
   int num_dir = 0;
 
@@ -232,7 +232,7 @@ files_count(void)
   dp = nameiparent(path, name);
 
   for(inum = 1; inum < sb.ninodes; inum++){
-    bp = bread(dp->dev, IBLOCK(inum, sb));
+    bp = bread(dp->dev, IBLOCK(inum, sb));  //en dp->dev inicialmente iba dev
     dip = (struct dinode*)bp->data + inum%IPB;
     if(dip->type == 1){  
       num_dir++;
