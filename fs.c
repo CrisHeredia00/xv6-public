@@ -220,26 +220,20 @@ files_count(void)
   int inum;
   struct buf *bp;
   struct dinode *dip;
+  int num_inode = 0;
 
-  char name[DIRSIZ], *path; //error en el path
-  struct inode *dp;
-  int num_dir = 0;
-
-
-  if(argstr(0, &path) < 0)
-    return -1;
-
-  dp = nameiparent(path, name);
 
   for(inum = 1; inum < sb.ninodes; inum++){
-    bp = bread(dp->dev, IBLOCK(inum, sb));  //en dp->dev inicialmente iba dev
+    //falta agregar initlock
+    bp = bread(1, IBLOCK(inum, sb));  //en dp->dev inicialmente iba dev
     dip = (struct dinode*)bp->data + inum%IPB;
-    if(dip->type == 1){  
-      num_dir++;
+    if(dip->type != 0){  
+      num_inode++;
     }
     brelse(bp);
+    //falta soltar
   }
-  return num_dir;
+  return num_inode;
 }
 
 // Copy a modified in-memory inode to disk.
