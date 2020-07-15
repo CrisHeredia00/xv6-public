@@ -1,7 +1,7 @@
 #include "types.h"
 #include "stat.h"
 #include "user.h"
-#include "fs.c"
+#include "defs.h"
 
 
 int main(void) {
