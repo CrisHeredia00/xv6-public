@@ -4,6 +4,6 @@
 
 
 int main(void) {
-    printf(1, "La cantidad de procesos en ejecucion en la CPU es %i\n", files_count());
+    printf(1, "La cantidad de inodes usados en la CPU es %d\n", files_count());
     exit();
 }

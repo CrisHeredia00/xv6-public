@@ -114,6 +114,10 @@ sys_fstat(void)
   return filestat(f, st);
 }
 
+int sys_files_count(void){
+  return files_count();
+}
+
 // Create the path new as a link to the same inode as old.
 int
 sys_link(void)
