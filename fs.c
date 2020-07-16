@@ -222,16 +222,15 @@ files_count(void)
   struct dinode *dip;
   int num_inode = 0;
 
-
+  
   for(inum = 1; inum < sb.ninodes; inum++){
-    //falta agregar initlock
-    bp = bread(1, IBLOCK(inum, sb));  //en dp->dev inicialmente iba dev
+    initlock(&icache.lock, "icache");
+    bp = bread(1, IBLOCK(inum, sb));
     dip = (struct dinode*)bp->data + inum%IPB;
     if(dip->type != 0){  
       num_inode++;
     }
     brelse(bp);
-    //falta soltar
   }
   return num_inode;
 }
